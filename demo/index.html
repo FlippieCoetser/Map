@@ -1,0 +1,17 @@
+<html>
+    <head>
+      <title>Events</title>
+    </head>
+    <body>
+      <button id='trigger'>Trigger</button>
+      <script type='text/javascript' src='../lib/browser/map.js'></script>
+      <script type='text/javascript'>
+        let Event = Map.Event;
+        let trigger = new Event();
+        let test = () => console.log('test');
+        trigger.on('testTrigger', test);
+        let button = document.getElementById('trigger')
+        button.onclick = () => trigger.emit('testTrigger')
+      </script>
+    </body>
+  </html>

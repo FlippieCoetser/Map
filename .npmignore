@@ -1,0 +1,15 @@
+.vscode/*
+test/*
+node_modules/*
+src/*
+complexity/*
+coverage/*
+.git
+.gitignore
+.complexrc
+complexity.md
+gulpfile.js
+intelliSense.gif
+tsconfig.json
+tslint.json
+wallaby.js
