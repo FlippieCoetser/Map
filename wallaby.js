@@ -5,9 +5,9 @@ module.exports = function (wallaby) {
       'src/dictionary.ts'
     ],
     tests: [
-      'test/bootstrap.test.ts',
-      'test/events.test.ts',
-      'test/dictionary.test.ts'
+      'test/Unit/bootstrap.test.ts',
+      'test/Unit/events.test.ts',
+      'test/Unit/dictionary.test.ts'
     ],
     testFramework: 'mocha',
     env: {

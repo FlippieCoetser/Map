@@ -4,6 +4,6 @@
         "sourceMap": true
     },
     "include": [
-        "test/*.ts"
+        "test/Unit/*.ts"
     ]
 }

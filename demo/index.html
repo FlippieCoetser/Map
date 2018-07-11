@@ -4,14 +4,21 @@
     </head>
     <body>
       <button id='trigger'>Trigger</button>
+      <label id='label'></label>
       <script type='text/javascript' src='../lib/browser/map.js'></script>
       <script type='text/javascript'>
+        let button = document.getElementById('trigger');
+        let label = document.getElementById('label');
+        
         let Event = Map.Event;
         let trigger = new Event();
-        let test = () => console.log('test');
-        trigger.on('testTrigger', test);
-        let button = document.getElementById('trigger')
-        button.onclick = () => trigger.emit('testTrigger')
+
+        let action = (message) => {
+          label.innerHTML = message
+        }
+        trigger.on('Trigger', action);
+        
+        button.onclick = () => trigger.emit('Trigger','message');
       </script>
     </body>
   </html>

@@ -2,7 +2,7 @@ import {expect} from "./bootstrap.test";
 // ***************************************************************************
 // * Dictionary
 // ***************************************************************************
-import {Dictionary} from "../src/dictionary";
+import {Dictionary} from "../../src/dictionary";
 type T = string;
 // ***************************************************************************
 // * Test Suite
