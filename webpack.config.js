@@ -3,7 +3,7 @@ module.exports = {
   entry: './src/events.ts',
   output: {
     filename: 'map.js',
-    path: path.resolve(__dirname, 'lib/browser'),
+    path: path.resolve(__dirname, 'lib/'),
     library: 'Map'
   },
   resolve: {
@@ -14,11 +14,11 @@ module.exports = {
       test: /\.ts$/, 
       loader: 'ts-loader',
       options: {
-        configFile: 'typescript.browser.json'
+        configFile: 'typescript.Package.json'
       }
     }]
   },
   devtool: 'inline-source-map',
   target: 'web',
-  watch: true
+  watch: false
 };
