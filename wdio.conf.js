@@ -1,3 +1,5 @@
+const report = require('multiple-cucumber-html-reporter');
+
 // ===============================
 // CucumberOpts.require Workaround
 // ===============================
@@ -132,7 +134,12 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    reporters: ['spec'],
+    reporters: ['spec', 'json'],
+    reporterOptions: {
+        outputDir: './report/',
+        filename: 'report',
+        combined: true
+    },
     //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
@@ -215,6 +222,11 @@ exports.config = {
     //
     // Gets executed after all workers got shut down and the process is about to exit. It is not
     // possible to defer the end of the process using a promise.
-    // onComplete: function(exitCode) {
-    // }
+    /*    onComplete: () => {
+            report.generate({
+                jsonDir: './report/',
+                reportPath: './report/'
+            });
+          } 
+    */
 }

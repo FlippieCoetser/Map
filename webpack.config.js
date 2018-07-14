@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-  entry: './src/events.ts',
+  entry: './src/app.ts',
   output: {
     filename: 'map.js',
     path: path.resolve(__dirname, 'lib/'),
@@ -18,7 +18,10 @@ module.exports = {
       }
     }]
   },
+  externals: {
+    d3: 'd3'
+  },
   devtool: 'inline-source-map',
   target: 'web',
-  watch: false
+  watch: true
 };
