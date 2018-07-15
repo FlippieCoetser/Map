@@ -13,7 +13,15 @@ trigger.on("Trigger", action);
 
 button.onclick = () => trigger.emit("Trigger", "message");
 
-const square = D3.selectAll("rect");
+const square = D3.selectAll("journey-map");
 square.style("fill", "orange");
 
 
+class Map extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+}
+
+window.customElements.define("journey-map", Map);
