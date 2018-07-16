@@ -10,7 +10,7 @@
     "prebuild": "npm run clean && npm run lint",
     "build": "tsc -p typescript.build.json",
     "pretest:unit": "npm run build && tsc -p typescript.Test.Unit.json",
-    "test:unit": "nyc mocha",
+    "test:unit": "nyc mocha ./test/unit/*.js",
     "package": "npx webpack --config webpack.config.js",
     "report": "nyc report --reporter=lcov",
     "prepublish": "npm run package",
