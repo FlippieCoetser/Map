@@ -5,7 +5,7 @@ Feature: Local server test
     so that I am able to confirm typescript.events works in the browser
 
     Background:
-        Given I open the url "http://127.0.0.1/demo/"
+        Given I open the url "http://127.0.0.1:5500/demo/"
         And a label with id "label" to be empty
 
     Scenario: Check trigger

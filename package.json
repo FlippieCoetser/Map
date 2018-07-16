@@ -56,6 +56,7 @@
     "ts-loader": "^3.0.3",
     "tslint": "^3.5.0",
     "typescript": "^2.5.3",
+    "wdio": "^2.0.2",
     "wdio-cucumber-framework": "^1.0.2",
     "wdio-json-reporter": "^0.3.1",
     "wdio-selenium-standalone-service": "0.0.9",
