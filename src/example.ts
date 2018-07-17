@@ -15,7 +15,7 @@ export class Example {
 
         this.ZoomLayer  = this.SVG.append("g");
 
-        let color = this.color();
+        let color = d3.scaleOrdinal(d3.schemeCategory10);
 
         this.ZoomLayer.selectAll("circle")
         .data(this.getData())
@@ -43,9 +43,5 @@ export class Example {
             // tslint:disable-next-line:no-bitwise
             return {"x": ~~(Math.random() * this.width ), "y": ~~(Math.random() * this.hight), "r": ~~(Math.random() * 90) + 10 };
         });
-    }
-
-    public color() {
-        return d3.scaleOrdinal(d3.schemeCategory10);
     }
 }
