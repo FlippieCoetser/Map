@@ -1,6 +1,6 @@
 import Event from "./events";
 import * as d3 from "d3";
-import { Example } from "./example";
+import { Example, Options } from "./example";
 
 let button = document.getElementById("trigger");
 let label = document.getElementById("label");
@@ -27,6 +27,11 @@ class Map extends HTMLElement {
 
 window.customElements.define("journey-map", Map);
 
-// tslint:disable-next-line:no-unused-variable
-let example = new Example();
+let options: Options = {
+  element: "#test",
+  hight: 600,
+  width: 960,
+};
 
+// tslint:disable-next-line:no-unused-variable
+let example = new Example(options);

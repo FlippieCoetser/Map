@@ -1,36 +1,53 @@
 import * as d3 from "d3";
+
+export interface Options {
+    element: string;
+    hight: number;
+    width: number;
+}
+
+interface Circle {
+    x: number;
+    y: number;
+    r: number;
+    color?: string;
+}
 export class Example {
-    private width: number;
-    private hight: number;
     private SVG;
-    private ZoomLayer;
+    private Layer;
+    private Colors: d3.ScaleOrdinal<string, string>;
+    private Circles: Circle[];
 
-    constructor() {
-        this.width = 960;
-        this.hight = 500;
+    constructor(public options: Options) {
+        this.createSVG(options);
+        this.createLayer();
+        this.enableZoom();
+    }
 
-        this.SVG = d3.select("#test")
-        .attr("width", this.width)
-        .attr("height", this.hight);
+    public createSVG(options: Options) {
+        this.SVG = d3
+            .select(this.options.element)
+            .attr("height", this.options.hight)
+            .attr("width", this.options.width);
+    }
 
-        this.ZoomLayer  = this.SVG.append("g");
+    public createColors() {
+        this.Colors = d3.scaleOrdinal(d3.schemeCategory10);
+    }
 
-        let color = d3.scaleOrdinal(d3.schemeCategory10);
+    public createLayer() {
+        this.Layer  = this.SVG.append("g");
+        this.drawLayer();
+    }
 
-        this.ZoomLayer.selectAll("circle")
-        .data(this.getData())
-        .enter()
-        .append("circle")
-        .attr("cx", function(d){ return d.x; })
-        .attr("cy", function(d){ return d.y; })
-        .attr("r", function(d){ return d.r; })
-        .attr("fill", function(d, i){
-            return color(i.toString());
-        })
-        .attr("fill-opacity", 0.5);
+    public drawLayer() {
+        this.createColors();
+        this.createCircles();
+    }
 
+    public enableZoom() {
         let zoomed = () => {
-            this.ZoomLayer.attr("transform", d3.event.transform);
+            this.Layer.attr("transform", d3.event.transform);
         };
 
         this.SVG.call(d3.zoom()
@@ -38,10 +55,34 @@ export class Example {
                 .on("zoom", zoomed)
             );
     }
-    public getData() {
-        return d3.range(0, 100).map((d) => {
-            // tslint:disable-next-line:no-bitwise
-            return {"x": ~~(Math.random() * this.width ), "y": ~~(Math.random() * this.hight), "r": ~~(Math.random() * 90) + 10 };
+
+    public getCircleData() {
+        this.Circles = d3.range(0, 100).map((index) => {
+            return {
+                "x": this.random(this.options.width),
+                "y": this.random(this.options.hight),
+                "r": (Math.random() * 90) + 10,
+                "color": this.Colors(index.toString()),
+            };
         });
+    }
+
+
+    public createCircles() {
+        this.getCircleData();
+        this.Layer
+            .selectAll("circle")
+            .data(this.Circles)
+            .enter()
+            .append("circle")
+            .attr("cx", (data) => data.x )
+            .attr("cy", (data) => data.y )
+            .attr("r", (data) => data.r )
+            .attr("fill", (data) => data.color )
+            .attr("fill-opacity", 0.5);
+    }
+
+    public random(max: number): number {
+        return (Math.random() * max );
     }
 }
