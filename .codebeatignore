@@ -1,3 +1,4 @@
 wallaby.js
 tasks/**
 wdio.conf.js
+report/**

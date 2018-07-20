@@ -14,7 +14,7 @@
     "package": "npx webpack --config webpack.config.js",
     "report": "nyc report --reporter=lcov",
     "prepublish": "npm run package",
-    "pretest:func": "tsc -p typescript.Test.Func.json",
+    "pretest:func": "npm run clean && tsc -p typescript.Test.Func.json",
     "test:func": "wdio"
   },
   "repository": {
@@ -57,8 +57,9 @@
     "tslint": "^3.5.0",
     "typescript": "^2.5.3",
     "wdio": "^2.0.2",
-    "wdio-cucumber-framework": "^1.0.2",
+    "wdio-cucumber-framework": "^2.2.0",
     "wdio-json-reporter": "^0.3.1",
+    "wdio-multiple-cucumber-html-reporter": "^0.1.1",
     "wdio-selenium-standalone-service": "0.0.9",
     "wdio-spec-reporter": "^0.1.2",
     "webdriver": "^5.0.0-rc1",

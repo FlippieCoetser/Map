@@ -134,16 +134,18 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    reporters: ['spec', 'json'],
+    reporters: ['spec', 'multiple-cucumber-html'],
     reporterOptions: {
-        outputDir: './report/',
-        filename: 'report',
-        combined: true
+        htmlReporter: {
+            jsonFolder: './report/',
+            reportFolder: './report/',
+            disableLog: true
+        }
     },
     //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
-        require: steps,        // <string[]> (file/dir) require files before executing features
+        require: steps,     // <string[]> (file/dir) require files before executing features
         backtrace: false,   // <boolean> show full backtrace for errors
         compiler: [],       // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
