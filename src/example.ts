@@ -83,6 +83,6 @@ export class Example {
     }
 
     public random(max: number): number {
-        return (Math.random() * max );
+        return (Math.random() * max);
     }
 }

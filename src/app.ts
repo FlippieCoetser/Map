@@ -1,37 +1,40 @@
 import Event from "./events";
-import * as d3 from "d3";
 import { Example, Options } from "./example";
-
-let button = document.getElementById("trigger");
-let label = document.getElementById("label");
-let trigger = new Event();
-
-let action = (message) => {
-  label.innerHTML = message;
-};
-
-trigger.on("Trigger", action);
-
-button.onclick = () => trigger.emit("Trigger", "message");
-
-const square = d3.selectAll("journey-map");
-square.style("fill", "orange");
-
+import { Chart } from "./chart";
+import { Layer } from "./layer";
 
 class Map extends HTMLElement {
+  public button: HTMLElement;
+  public label: HTMLElement;
+  public event: Event;
   constructor() {
     super();
+    this.createButton("trigger");
+    this.createLabel("label");
+
+    this.event = new Event();
+    this.event.on("Trigger", this.action);
   }
 
+  private action = (message) => { this.label.innerHTML = message; };
+  private trigger = () => this.event.emit("Trigger", "message");
+
+  private createButton(id: string) {
+    this.button = document.createElement("button");
+    this.button.setAttribute("id", id);
+    this.button.innerHTML = "Trigger";
+    this.button.onclick = this.trigger;
+    this.appendChild(this.button);
+  }
+
+  private createLabel(id: string) {
+    this.label = document.createElement("label");
+    this.label.setAttribute("id", id);
+    this.appendChild(this.label);
+  }
 }
 
 window.customElements.define("journey-map", Map);
 
-let options: Options = {
-  element: "#test",
-  hight: 600,
-  width: 960,
-};
-
 // tslint:disable-next-line:no-unused-variable
-let example = new Example(options);
+let layer = new Layer();
