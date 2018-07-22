@@ -14,7 +14,7 @@
     "package": "npx webpack --config webpack.config.js",
     "report": "nyc report --reporter=lcov",
     "prepublish": "npm run package",
-    "pretest:func": "npm run clean && tsc -p typescript.Test.Func.json",
+    "pretest:func": "npm run build && tsc -p typescript.Test.Func.json",
     "test:func": "wdio"
   },
   "repository": {
@@ -37,6 +37,7 @@
   "devDependencies": {
     "@types/chai": "^4.0.4",
     "@types/d3": "^5.0.0",
+    "@types/d3-scale": "^2.0.1",
     "@types/mocha": "^2.2.43",
     "@types/sinon": "^2.3.6",
     "@types/sinon-chai": "^2.7.29",
@@ -59,7 +60,7 @@
     "wdio": "^2.0.2",
     "wdio-cucumber-framework": "^2.2.0",
     "wdio-json-reporter": "^0.3.1",
-    "wdio-multiple-cucumber-html-reporter": "^0.1.1",
+    "wdio-multiple-cucumber-html-reporter": "^0.1.2",
     "wdio-selenium-standalone-service": "0.0.9",
     "wdio-spec-reporter": "^0.1.2",
     "webdriver": "^5.0.0-rc1",
@@ -67,7 +68,9 @@
   },
   "dependencies": {
     "d3": "^5.5.0",
-    "d3-fetch": "^1.1.0"
+    "d3-fetch": "^1.1.0",
+    "d3-line": "0.0.1",
+    "d3-scale": "^2.1.0"
   },
   "directories": {
     "lib": "lib",
