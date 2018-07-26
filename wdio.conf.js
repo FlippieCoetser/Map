@@ -139,7 +139,10 @@ exports.config = {
         htmlReporter: {
             jsonFolder: './report/',
             reportFolder: './report/',
-            disableLog: true
+            disableLog: true,
+            pageTitle: "Map User-Stories",
+            reportName: "Map Functional Overview",
+            displayDuration: true,
         }
     },
     //
