@@ -1,6 +1,4 @@
 import Event from "./events";
-import { Example, Options } from "./example";
-import { Chart } from "./chart";
 import { Layer } from "./layer";
 
 class Map extends HTMLElement {

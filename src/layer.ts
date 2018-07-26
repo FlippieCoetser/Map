@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { Options, Shape } from "./shape";
 import { Hexagon } from "./hexagon";
 
 export interface Data {
@@ -14,8 +15,15 @@ export class Layer {
     constructor() {
         this.createSVG();
         this.createLayer();
-        let shape = new Hexagon();
-        this.data = shape.loadData();
+        let options: Options = {
+            center: {
+                x: 150,
+                y: 150,
+            },
+            size: 100,
+        };
+        let testShape: Shape = new Hexagon(options);
+        this.data = testShape.getShapeCoordinates();
         this.generateLine();
         this.generatePath();
         this.enableZoom();
