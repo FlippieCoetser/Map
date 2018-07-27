@@ -41,7 +41,7 @@ describe("Given Hexagon", () => {
     it("When instantiated then segmentAngle should eql 60", () => {
         let hexagon: Shape = new Hexagon(options);
         let segmentAngle = 60;
-        expect(hexagon.segmentAngle).eql(segmentAngle);
+        expect(hexagon.innerAngle).eql(segmentAngle);
     });
 
     it("When 0 is paased as segment to angle(segment) then 0 should be returned", () => {
