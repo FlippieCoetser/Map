@@ -1,11 +1,7 @@
 import * as d3 from "d3";
-import { Options, Shape } from "./shape";
+import { Coordinate, Options, Shape } from "./shape";
 import { Hexagon } from "./hexagon";
 
-export interface Data {
-    x: number;
-    y: number;
-  }
 export class Layer {
     public SVG;
     public data;
@@ -23,7 +19,7 @@ export class Layer {
             size: 100,
         };
         let testShape: Shape = new Hexagon(options);
-        this.data = testShape.getShapeCoordinates();
+        this.data = testShape.getShapePath();
         this.generateLine();
         this.generatePath();
         this.enableZoom();
@@ -40,7 +36,7 @@ export class Layer {
 
     public generateLine() {
         this.line = d3
-            .line<Data>()
+            .line<Coordinate>()
             .x((d) => d.x)
             .y((d) => d.y)
             .curve(d3.curveLinearClosed);

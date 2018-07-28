@@ -35,7 +35,7 @@ describe("Given Hexagon", () => {
     it("When instantiated then qtySegments should eql 6", () => {
         let hexagon: Shape = new Hexagon(options);
         let segments = 6;
-        expect(hexagon.totalSegments).eql(segments);
+        expect(hexagon.qtySegments).eql(segments);
     });
 
     it("When instantiated then segmentAngle should eql 60", () => {
@@ -71,6 +71,6 @@ describe("Given Hexagon", () => {
 
     it("When 7 is paased as segment to angle(segment) then 0 should be returned", () => {
         let hexagon: Shape = new Hexagon(options);
-        console.log(hexagon.getShapeCoordinates());
+        console.log(hexagon.getShapePath());
     });
 });

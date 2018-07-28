@@ -5,13 +5,13 @@ export enum Shapes {
 }
 
 export interface Coordinate {
-    "x": number;
-    "y": number;
+    x: number;
+    y: number;
 }
 
 export interface Options {
-    "center": Coordinate;
-    "size": number;
+    center: Coordinate;
+    size: number;
 }
 
 export abstract class Shape {
@@ -28,7 +28,7 @@ export abstract class Shape {
         return 360 / this.type;
     }
 
-    public get totalSegments(): number {
+    public get qtySegments(): number {
         return this.type;
     }
 
@@ -52,9 +52,8 @@ export abstract class Shape {
         };
     }
 
-    public getShapeCoordinates(): Coordinate[] {
-        let index: number = 0;
-        for (index = 0; index < this.totalSegments; index++) {
+    public getShapePath(): Coordinate[] {
+        for (let index = 0; index < this.qtySegments; index++) {
             this.path.push(this.getSegmentEdgeCoordinates(index));
         }
         return this.path;
