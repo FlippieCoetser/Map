@@ -1,5 +1,7 @@
 import * as d3 from "d3";
-import { Coordinate, Options, Shape } from "./shape";
+import { Options, Shape} from "./shape";
+import { Coordinate } from "./interfaces";
+// tslint:disable-next-line:no-unused-variable
 import { Hexagon } from "./hexagon";
 
 export class Layer {
@@ -8,7 +10,14 @@ export class Layer {
     public path;
     public line;
     public Layer;
+    public Columns;
+    public Rows;
+    public Width;
+    public Hight;
+    public Grid;
+    public Dots;
     constructor() {
+        this.configure();
         this.createSVG();
         this.createLayer();
         let options: Options = {
@@ -16,21 +25,26 @@ export class Layer {
                 x: 150,
                 y: 150,
             },
-            size: 100,
+            size: 50,
         };
-        let testShape: Shape = new Hexagon(options);
-        this.data = testShape.getShapePath();
+        let Shape: Shape = new Hexagon(options);
+        this.data = Shape.path;
         this.generateLine();
         this.generatePath();
         this.enableZoom();
+    }
+
+    public configure() {
+        this.Width = 850;
+        this.Hight = 350;
     }
 
     public createSVG() {
         this.SVG = d3
             .select("body")
             .append("svg")
-            .attr("width", 400)
-            .attr("height", 300)
+            .attr("width", this.Width)
+            .attr("height", this.Hight)
             .attr("id", "Hexagon");
     }
 
@@ -48,8 +62,8 @@ export class Layer {
             .append("path")
             .attr("d", this.line(this.data))
             .attr("stroke", "red")
-            .attr("stroke-dasharray", "5,5")
-            .attr("stroke-width", 3)
+            // .attr("stroke-dasharray", "5,5")
+            // .attr("stroke-width", 3)
             .attr("fill", "rgba(255,0,0,0.4)");
     }
 
@@ -67,4 +81,12 @@ export class Layer {
                 .on("zoom", zoomed)
             );
     }
+}
+
+export interface Data {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    click: number;
 }

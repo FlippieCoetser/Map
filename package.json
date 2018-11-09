@@ -15,7 +15,8 @@
     "report": "nyc report --reporter=lcov",
     "prepublish": "npm run package",
     "pretest:func": "npm run build && tsc -p typescript.Test.Func.json",
-    "test:func": "wdio"
+    "test:func": "wdio",
+    "server": "http-server ./test/unit"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "@types/chai": "^4.0.4",
     "@types/d3": "^5.0.0",
     "@types/d3-scale": "^2.0.1",
+    "@types/jsdom": "^11.0.6",
     "@types/mocha": "^2.2.43",
     "@types/sinon": "^2.3.6",
     "@types/sinon-chai": "^2.7.29",
@@ -46,6 +48,8 @@
     "complexity-report": "^1.4.1",
     "cucumber.decorators": "^2.0.0",
     "fs-extra": "^6.0.1",
+    "http-server": "^0.11.1",
+    "jsdom": "^12.0.0",
     "mocha": "^2.3.4",
     "multiple-cucumber-html-reporter": "^1.10.2",
     "node-cmd": "^3.0.0",
